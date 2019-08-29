@@ -16,13 +16,13 @@ dependencies {
 		because("moving/deleting directory trees")
 	}
 
-	testImplementation("org.assertj:assertj-core:${Versions.assertJ}") {
+	testImplementation(assertJCore()) {
 		because("more assertions")
 	}
 	testImplementation("com.tngtech.archunit:archunit-junit5-api:${Versions.archunit}") {
 		because("checking the architecture of JUnit 5")
 	}
-	testImplementation("org.codehaus.groovy:groovy-all:${Versions.groovy}") {
+	testImplementation(groovy()) {
 		because("it provides convenience methods to handle process output")
 		exclude(group = "org.junit.platform", module = "junit-platform-launcher")
 	}

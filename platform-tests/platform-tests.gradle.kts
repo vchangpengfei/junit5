@@ -16,11 +16,11 @@ dependencies {
 	testImplementation(project(":junit-platform-runner"))
 	testImplementation(project(":junit-platform-testkit"))
 	testImplementation(project(path = ":junit-jupiter-engine", configuration = "testArtifacts"))
-	testImplementation("org.apiguardian:apiguardian-api:${Versions.apiGuardian}")
+	testImplementation(apiGuardian())
 
 	// --- Test run-time dependencies ---------------------------------------------
 	testRuntimeOnly(project(":junit-vintage-engine"))
-	testRuntimeOnly("org.codehaus.groovy:groovy-all:${Versions.groovy}") {
+	testRuntimeOnly(groovy()) {
 		because("`ReflectionUtilsTests.findNestedClassesWithInvalidNestedClassFile` needs it")
 	}
 
@@ -30,7 +30,7 @@ dependencies {
 	}
 	jmhAnnotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:${Versions.jmh}")
 	jmh(project(":junit-jupiter-api"))
-	jmh("junit:junit:${Versions.junit4}")
+	jmh(junit4())
 }
 
 jmh {

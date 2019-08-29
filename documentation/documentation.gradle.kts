@@ -6,7 +6,7 @@ buildscript {
 	dependencies {
 		// upgrade to latest jruby version due to a bugfix needed for Windows 10.
 		// can be removed, when asciidoctorj uses this as a default version.
-		classpath("org.jruby:jruby-complete:${Versions.jruby}")
+		classpath(jruby())
 
 		// classpath("org.asciidoctor:asciidoctorj-epub3:${Versions.asciidoctorPdf}")
 		classpath("org.asciidoctor:asciidoctorj-pdf:${Versions.asciidoctorPdf}")
@@ -31,7 +31,7 @@ javaLibrary {
 }
 
 dependencies {
-	asciidoctor("org.jruby:jruby-complete:${Versions.jruby}")
+	asciidoctor(jruby())
 
 	// Jupiter API is used in src/main/java
 	implementation(project(":junit-jupiter-api"))
@@ -45,11 +45,11 @@ dependencies {
 
 	testImplementation("org.jetbrains.kotlin:kotlin-stdlib")
 
-	testRuntimeOnly("org.apache.logging.log4j:log4j-core:${Versions.log4j}")
-	testRuntimeOnly("org.apache.logging.log4j:log4j-jul:${Versions.log4j}")
+	testRuntimeOnly(log4JCore())
+	testRuntimeOnly(log4JJUL())
 
 	// for ApiReportGenerator
-	testImplementation("io.github.classgraph:classgraph:${Versions.classgraph}")
+	testImplementation(classGraph())
 }
 
 asciidoctorj {
