@@ -20,6 +20,7 @@ require(javaVersion.isJava12Compatible) {
 
 rootProject.name = "junit5"
 
+include("dependencies")
 include("documentation")
 include("junit-jupiter")
 include("junit-jupiter-api")

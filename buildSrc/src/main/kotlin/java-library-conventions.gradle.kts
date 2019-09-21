@@ -1,3 +1,6 @@
+import groovy.util.Node
+import groovy.util.NodeList
+
 plugins {
 	`java-library`
 	eclipse
@@ -112,6 +115,21 @@ if (project in mavenizedProjects) {
 				artifact(javadocJar)
 				pom {
 					description.set(provider { "Module \"${project.name}\" of JUnit 5." })
+					withXml {
+						val root = asNode()
+						val nodes = root["dependencyManagement"] as NodeList
+						if (nodes.isNotEmpty()) {
+							root.remove(nodes.first() as Node)
+						}
+					}
+				}
+				versionMapping {
+					usage("java-api") {
+						fromResolutionResult()
+					}
+					usage("java-runtime") {
+						fromResolutionResult()
+					}
 				}
 			}
 		}

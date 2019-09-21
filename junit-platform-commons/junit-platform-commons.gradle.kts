@@ -21,8 +21,10 @@ configurations {
 val mainRelease9Compile by configurations.getting
 
 dependencies {
+	api(platform(project(":dependencies")))
+
 	mainRelease9Compile(sourceSets.main.get().output)
-	api("org.apiguardian:apiguardian-api:${Versions.apiGuardian}")
+	api("org.apiguardian:apiguardian-api")
 }
 
 tasks {

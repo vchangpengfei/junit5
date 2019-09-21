@@ -5,8 +5,10 @@ plugins {
 description = "JUnit Platform Runner"
 
 dependencies {
-	api("junit:junit:${Versions.junit4}")
-	api("org.apiguardian:apiguardian-api:${Versions.apiGuardian}")
+	api(platform(project(":dependencies")))
+
+	api("junit:junit")
+	api("org.apiguardian:apiguardian-api")
 
 	api(project(":junit-platform-launcher"))
 	api(project(":junit-platform-suite-api"))

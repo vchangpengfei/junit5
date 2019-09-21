@@ -8,11 +8,13 @@ plugins {
 description = "JUnit Platform Console"
 
 dependencies {
-	api("org.apiguardian:apiguardian-api:${Versions.apiGuardian}")
+	api(platform(project(":dependencies")))
+	api("org.apiguardian:apiguardian-api")
 
 	api(project(":junit-platform-reporting"))
 
-	shadowed("info.picocli:picocli:${Versions.picocli}")
+	shadowed(platform(project(":dependencies")))
+	shadowed("info.picocli:picocli")
 }
 
 tasks {
